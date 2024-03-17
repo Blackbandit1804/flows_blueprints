@@ -14,7 +14,7 @@ blueprint:
 
     awtrix:
       name: AWTRIX device
-      description: The AWTRIX device for show playing status.
+      description: The AWTRIX 3 device for show playing status.
       selector:
         device:
           integration: mqtt
@@ -28,7 +28,7 @@ trigger:
 
 variables:
   awtrix: !input awtrix
-  awtrix_device_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
+  awtrix_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
 
 action:
   - variables:
