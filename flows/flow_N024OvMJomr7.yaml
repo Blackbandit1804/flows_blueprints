@@ -28,7 +28,7 @@ trigger:
 
 variables:
   awtrix: !input awtrix
-  awtrix_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
+  awtrix_name: "{{ iif( attr(awtrix, 'name_by_user') != none, attr(awtrix, 'name_by_user'), attr(awtrix, 'name') ) }}"
 
 action:
   - variables:
