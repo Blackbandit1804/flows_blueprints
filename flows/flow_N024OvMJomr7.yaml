@@ -28,7 +28,7 @@ trigger:
 
 variables:
   awtrix: !input awtrix
-  awtrix_device_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
+  awtrix_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
 
 action:
   - variables:
@@ -42,13 +42,13 @@ action:
     then:
       - service: awtrix.push_app_data
         data:
-          device: "{{awtrix_device_name}}"
+          device: "{{awtrix_name}}"
           name: sonos
           data: {}
     else:
       - service: awtrix.push_app_data
         data:
-          device: "{{awtrix_device_name}}"
+          device: "{{awtrix_name}}"
           name: sonos
           data:
             text: "{{ playing_state }}: {{ artist_template }} - {{ title_template }}"
