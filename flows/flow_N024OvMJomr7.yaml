@@ -12,23 +12,23 @@ blueprint:
             - domain: media_player
           multiple: false
 
-    awtrix:
+    awtrix_device:
       name: AWTRIX device
       description: The AWTRIX device for show playing status.
       selector:
         device:
           integration: mqtt
           manufacturer: Blueforcer
-          model: AWTRIX 3
-          multiple: true
+          model: AWTRIX Light
+          multiple: false
 
 trigger:
   - platform: state
     entity_id: !input media_player
 
 variables:
-  awtrix: !input awtrix
-  awtrix_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
+  awtrix: !input awtrix_device
+  awtrix_device_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
 
 action:
   - variables:
@@ -42,13 +42,13 @@ action:
     then:
       - service: awtrix.push_app_data
         data:
-          device: "{{awtrix_name}}"
+          device: "{{awtrix_device_name}}"
           name: sonos
           data: {}
     else:
       - service: awtrix.push_app_data
         data:
-          device: "{{awtrix_name}}"
+          device: "{{awtrix_device_name}}"
           name: sonos
           data:
             text: "{{ playing_state }}: {{ artist_template }} - {{ title_template }}"
