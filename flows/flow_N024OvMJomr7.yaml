@@ -12,15 +12,16 @@ blueprint:
             - domain: media_player
           multiple: false
 
+  input:
     awtrix:
       name: AWTRIX Device
-      description: Select the Awtrix 3 device for show playing status.
+      description: Select the Awtrix 3
       selector:
         device:
           integration: mqtt
           manufacturer: Blueforcer
           model: AWTRIX 3
-          multiple: true
+          multiple: truee
 
 trigger:
   - platform: state
