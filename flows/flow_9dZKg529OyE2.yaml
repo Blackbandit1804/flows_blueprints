@@ -4,12 +4,12 @@ blueprint:
   domain: automation
   author: N1c093
   input:
-    awtrix_light:
+    awtrix:
       name: Awtrix Display
       description: Select the target Awtrix display.
       selector:
         device:
-          model: "AWTRIX Light"
+          model: "AWTRIX 3"
     effect_list:
       name: Effects
       description: 'Select the effects which should randomly be displayed. See: https://blueforcer.github.io/awtrix-light/#/effects'
@@ -57,7 +57,7 @@ blueprint:
 mode: queued
 
 variables:
-  device_id: !input awtrix_light
+  device_id: !input awtrix
   awtrix_light: "{{ iif( device_attr(device_id, 'name_by_user') != none, device_attr(device_id, 'name_by_user'), device_attr(device_id, 'name') ) }}"
   effect_list: !input effect_list
   effect_random: "{{effect_list|random}}"
@@ -72,7 +72,7 @@ action:
     data:
       qos: 0
       retain: false
-      topic: "{{awtrix_light}}/custom/effect"
+      topic: "{{awtrix}}/custom/effect"
       payload: |-
         {   
           "effect": "{{ effect_random }}",
