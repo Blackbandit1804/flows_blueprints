@@ -1,5 +1,5 @@
 blueprint:
-  name: AWTRIX 3 Now Playing
+  name: AWTRIX now playing
   description: Show the current playing track
   domain: automation
   input:
@@ -20,7 +20,7 @@ blueprint:
           integration: mqtt
           manufacturer: Blueforcer
           model: AWTRIX 3
-          multiple: truee
+          multiple: true
 
 trigger:
   - platform: state
