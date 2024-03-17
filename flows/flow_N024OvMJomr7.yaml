@@ -1,5 +1,5 @@
 blueprint:
-  name: AWTRIX now playing
+  name: AWTRIX 3 Now Playing
   description: Show the current playing track
   domain: automation
   input:
