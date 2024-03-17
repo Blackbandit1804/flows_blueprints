@@ -12,7 +12,6 @@ blueprint:
             - domain: media_player
           multiple: false
 
-  input:
     awtrix:
       name: AWTRIX Device
       description: Select the Awtrix 3
