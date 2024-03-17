@@ -20,7 +20,7 @@ blueprint:
           integration: mqtt
           manufacturer: Blueforcer
           model: AWTRIX 3
-          multiple: false
+          multiple: true
 
 trigger:
   - platform: state
