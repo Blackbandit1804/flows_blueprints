@@ -27,7 +27,7 @@ trigger:
     entity_id: !input media_player
 
 variables:
-  awtrix: !input awtrix_device
+  awtrix: !input awtrix
   awtrix_device_name: "{{ iif( device_attr(awtrix, 'name_by_user') != none, device_attr(awtrix, 'name_by_user'), device_attr(awtrix, 'name') ) }}"
 
 action:
